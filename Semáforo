@@ -1,0 +1,83 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Arrays_Ex1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Hashtable veiculo = new Hashtable();
+            Hashtable marca = new Hashtable();
+            Hashtable modelo = new Hashtable();
+            Hashtable placa = new Hashtable();
+            Hashtable velocidade = new Hashtable();
+            double velmedia = 0;
+            int x = 1;
+            int i = 0;
+            int qnt = 1;
+
+
+            while (x == 1)
+            {
+
+                Console.WriteLine("Digite o " + i + " veículo:");
+                veiculo[i] = Console.ReadLine();
+                Console.WriteLine("Digite a " + i + " Marca:");
+                marca[i] = Console.ReadLine();
+                Console.WriteLine("Digite o " + i + " Modelo:");
+                modelo[i] = Console.ReadLine();
+                Console.WriteLine("Digite a " + i + " Placa:");
+                placa[i] = Console.ReadLine();
+                Console.WriteLine("Digite a " + i + " Velocidade:");
+                velocidade[i] = Console.ReadLine();
+                i++;
+                qnt++;
+                Console.WriteLine("Deseja aferir um novo veículo? 1 - Sim | 2 - Não");
+                int y = Convert.ToInt16(Console.ReadLine());
+                if (y == 1)
+                {
+                    
+                }
+                else
+                {
+                    x++;
+                }
+
+            }
+            if (qnt > 1)
+            {
+                for (int y = 0; y < i; y++)
+                {
+                    if (Convert.ToDouble(velocidade[y]) > 80)
+                    {
+                        Console.WriteLine("Infrator! Veículo: {0}, marca: {1}, modelo: {2}, placa: {3}, velocidade: {4}Km/H.", veiculo[y], marca[y], modelo[y], placa[y], velocidade[y]);
+                    }
+                }
+
+                for (int y = 0; y < i; y++)
+                {
+                    velmedia += Convert.ToDouble(velocidade[y]);
+                }
+            }
+            else
+            {
+                velmedia = Convert.ToDouble(velocidade[0]);
+            }
+            velmedia = velmedia / i;
+
+            string message = (velmedia > 80) ? "A média está acima do limite" : "A média está boa...";
+
+            Console.WriteLine("A Velocidade média dos veículos é de: {0}Km/h", velmedia);
+            Console.WriteLine(message);
+
+
+            Console.ReadKey();
+        }
+    }
+}
